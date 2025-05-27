@@ -1,23 +1,18 @@
 /* src/App.css */
 
 /* 1. Global Box-Sizing Reset */
-/* This is crucial for consistent element sizing.
-   It ensures that padding and border are included in an element's
-   total width and height, preventing unexpected overflows. */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 /* 2. CSS Variable Definitions */
-/* Define your theme colors and other reusable values here.
-   These are referenced in your Navbar.css. */
 :root {
   /* Example values - adjust these to match your actual theme */
   --primary-color: #007bff;
   --secondary-color: #6c757d;
   --text-color-dark: #333;
   --text-color-light: #f8f9fa;
-  --background-color: #ffffff;
+  --background-color: #ffffff; /* This will be overridden by JS for dark mode */
   --border-color: #dee2e6;
 
   /* Navbar specific variables */
@@ -26,26 +21,30 @@
   --navbar-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   --navbar-text: #343a40; /* Dark text for light navbar */
   --navbar-hover: #007bff; /* Primary color on hover */
+
+  /* Dark theme variables for the rest of the app, to be overridden by JS */
+  --app-bg: #1a1a2e; /* Overall app background */
+  --app-text: #e0e0e0; /* Overall app text color */
 }
 
 /* 3. Base Body and HTML Styles */
 html, body {
   margin: 0;
   padding: 0;
-  width: 100%; /* Ensures body takes full width */
-  font-family: 'Arial', sans-serif; /* Example font, replace with your preferred font */
+  width: 100%;
+  font-family: 'Arial', sans-serif;
   line-height: 1.6;
-  color: var(--text-color-dark);
-  background-color: var(--background-color);
+
+  /* These will be set by JS in App.jsx to dark mode values */
+  color: var(--text-color-dark); /* Initial, but overridden */
+  background-color: var(--background-color); /* Initial, but overridden */
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  /* Crucial for preventing horizontal scrolling on mobile */
-  overflow-x: hidden;
+  overflow-x: hidden; /* Crucial for preventing horizontal scrolling on mobile */
 }
 
 /* 4. Scroll Behavior */
-/* Makes scrolling smoother for anchor links */
 html {
   scroll-behavior: smooth;
 }
@@ -76,4 +75,90 @@ a:hover {
   margin: 2rem 0;
   flex-wrap: wrap; /* Allows items to wrap on smaller screens */
   max-width: 100%; /* Ensures container itself doesn't cause overflow */
+}
+
+/* 8. Specific styles for the Hero Section */
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh; /* Make it full viewport height */
+  padding-top: 100px; /* Adjust for fixed navbar height */
+  position: relative; /* Needed for positioning background */
+  overflow: hidden; /* Ensure background doesn't overflow */
+
+  /* Set the background image here */
+  background-image: url('/IMG-20230707-WA0004.jpg');
+  background-size: cover; /* Cover the entire section */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+
+  /* Optional: Add a subtle overlay to make text more readable on top of the image */
+  /* background-color: rgba(0, 0, 0, 0.5); */ /* Dark overlay */
+  /* background-blend-mode: overlay; */ /* Blends the overlay with the image */
+}
+
+.hero-text-container {
+  z-index: 10; /* Ensure text is above background */
+  color: var(--text-color-light); /* Assuming you want light text on the dark background */
+}
+
+.hero-text-container .greeting {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-text-container .roles {
+  font-size: 1.8rem;
+}
+
+
+/* Dark mode styles for the main app container (if you decide to use it this way) */
+/* This is for the `App` div, which is always dark-mode */
+.App.dark-mode {
+    background-color: var(--app-bg); /* Use the CSS variable defined in :root */
+    color: var(--app-text); /* Use the CSS variable defined in :root */
+}
+
+/* Adjustments for headings/text within dark mode */
+.App.dark-mode h1,
+.App.dark-mode h2,
+.App.dark-mode h3,
+.App.dark-mode h4,
+.App.dark-mode h5,
+.App.dark-mode h6 {
+    color: var(--app-text); /* Ensure headings are also light */
+}
+.App.dark-mode p,
+.App.dark-mode span,
+.App.dark-mode label {
+    color: var(--app-text); /* Ensure general text is also light */
+}
+
+/* Override navbar text color if you want it to be different in dark mode,
+   but your navbar already uses its own specific vars for this. */
+.App.dark-mode .navbar-brand a,
+.App.dark-mode .navbar-links a,
+.App.dark-mode .social-icon-item .svg-inline--fa {
+  color: var(--navbar-text); /* Or adjust to a dark mode specific navbar text color */
+}
+
+/* Responsive adjustments for hero section text */
+@media (max-width: 768px) {
+  .hero-text-container .greeting {
+    font-size: 2.8rem;
+  }
+  .hero-text-container .roles {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-text-container .greeting {
+    font-size: 2.2rem;
+  }
+  .hero-text-container .roles {
+    font-size: 1.2rem;
+  }
 }
