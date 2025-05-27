@@ -16,38 +16,39 @@ import Contact from "./components/contacts/Contact.jsx";
 import Footer from "./components/footer/Footer.jsx";
 import Resume from "./components/resume/Resume.jsx"
 
-document.documentElement.style.setProperty('--background-color', '#1a1a2e');
-document.documentElement.style.setProperty('--text-color', '#e0e0e0');
-document.body.style.backgroundColor = '#1a1a2e';
-document.body.style.color = '#e0e0e0';
+// REMOVE these direct JavaScript DOM manipulations for background and text color
+// document.documentElement.style.setProperty('--background-color', '#1a1a2e');
+// document.documentElement.style.setProperty('--text-color', '#e0e0e0');
+// document.body.style.backgroundColor = '#1a1a2e'; // This was overriding the image
+// document.body.style.color = '#e0e0e0';
 
 
 function App() {
-    // --- KEY CHANGE: Force theme to 'dark-mode' from the start ---
-    const [theme, setTheme] = useState('dark-mode'); // No localStorage check, always start dark
+    // Keeping theme state for now, but for a fixed dark mode, it's not strictly necessary.
+    // If you always want dark mode, you don't need this state or useEffect.
+    // However, it's harmless if you plan to add a theme toggle later.
+    const [theme, setTheme] = useState('dark-mode');
 
     useEffect(() => {
-        // This will now always set the body class to 'dark-mode'
-        document.body.className = theme;
-        // Also, explicitly remove any lingering localStorage theme setting to prevent future issues
-        localStorage.removeItem('theme');
+        document.body.className = theme; // This applies 'dark-mode' class to body
+        // Also, apply the global background and text colors from CSS variables
+        // These are now handled by the .dark-mode class in App.css
     }, [theme]);
 
-    // Define common options for Lottie animations here
     const commonLottieOptions = {
-        loop: true,     // Set to true for infinite loop
-        autoplay: true,    // Set to true to play automatically
+        loop: true,
+        autoplay: true,
         rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice' // Maintain aspect ratio
+            preserveAspectRatio: 'xMidYMid slice'
         }
     };
 
     return (
-        // --- KEY CHANGE: App component always uses 'dark-mode' class ---
-        <div className={`App dark-mode`}>
+        // The `App` div already has the `dark-mode` class applied
+        <div className={`App ${theme}`}> {/* Keep this for styling the main App container */}
             <Navbar />
 
-            <section id="hero" className="hero-section">
+            <section id="hero" className="hero-section"> {/* Background image applied here */}
                 <div className="hero-text-container">
                     <h1 className="greeting">Hi, I'm Akarsh</h1>
                     <p className="roles">
@@ -59,63 +60,52 @@ function App() {
             <About />
 
             <div className="lottie-container">
-  {/* First animation */}
-  <div className="lottie-wrapper">
-    <Lottie
-      animationData={Animation}
-      loop={commonLottieOptions.loop}
-      autoplay={commonLottieOptions.autoplay}
-      style={{ width: '100%', height: '100%', maxWidth: '180px', maxHeight: '180px' }}
-    />
-  </div>
+                <div className="lottie-wrapper">
+                    <Lottie
+                        animationData={Animation}
+                        {...commonLottieOptions} // Use spread to apply common options
+                        style={{ width: '100%', height: '100%', maxWidth: '180px', maxHeight: '180px' }}
+                    />
+                </div>
 
-  {/* Second animation */}
-  <div className="lottie-wrapper">
-    <Lottie
-      animationData={animation2}
-      loop={commonLottieOptions.loop}
-      autoplay={commonLottieOptions.autoplay}
-      style={{ width: '100%', height: '100%', maxWidth: '180px', maxHeight: '180px' }}
-    />
-  </div>
-</div>
-
+                <div className="lottie-wrapper">
+                    <Lottie
+                        animationData={animation2}
+                        {...commonLottieOptions}
+                        style={{ width: '100%', height: '100%', maxWidth: '180px', maxHeight: '180px' }}
+                    />
+                </div>
+            </div>
 
             <Skills />
 
-            
-            
             <div style={{ width: '200px', height: '200px', margin: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Lottie
-                    animationData={animation3} // Use the specific animation data here
-                    loop={commonLottieOptions.loop}
-                    autoplay={commonLottieOptions.autoplay}
-                    style={{ width: '100%', height: '100%' }} // Style the Lottie component
+                    animationData={animation3}
+                    {...commonLottieOptions}
+                    style={{ width: '100%', height: '100%' }}
                 />
             </div>
-            
-           <Projects />
+
+            <Projects />
             <Personal />
 
             <div style={{ width: '200px', height: '200px', margin: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Lottie
-                    animationData={animation4} // Use the specific animation data here
-                    loop={commonLottieOptions.loop}
-                    autoplay={commonLottieOptions.autoplay}
-                    style={{ width: '100%', height: '100%' }} // Style the Lottie component
+                    animationData={animation4}
+                    {...commonLottieOptions}
+                    style={{ width: '100%', height: '100%' }}
                 />
             </div>
             <div style={{ width: '200px', height: '200px', margin: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <Lottie
-                    animationData={animation5} // Use the specific animation data here
-                    loop={commonLottieOptions.loop}
-                    autoplay={commonLottieOptions.autoplay}
-                    style={{ width: '100%', height: '100%' }} // Style the Lottie component
+                    animationData={animation5}
+                    {...commonLottieOptions}
+                    style={{ width: '100%', height: '100%' }}
                 />
             </div>
             <Resume />
             <Contact />
-            
             <Footer />
         </div>
     );
