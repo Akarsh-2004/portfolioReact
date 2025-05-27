@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import emailjs from 'emailjs-com';
 import './Contact.css';
 
+
 function Contact() {
   const form = useRef();
 
@@ -12,7 +13,7 @@ function Contact() {
       'service_12h3c2j',
       'template_yhw6rp1',
       form.current,
-      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
     )
     .then(() => {
       alert("Message sent!");

@@ -12,9 +12,7 @@ function Navbar() {
         <a href="#hero">Welcome!</a>
       </div>
       <ul className="navbar-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
+
         {/* Social Icons */}
         <li className="social-icon-item">
           <a href="https://github.com/Akarsh-2004" target="_blank" rel="noopener noreferrer">
