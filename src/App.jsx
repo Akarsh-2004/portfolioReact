@@ -104,7 +104,9 @@ function App() {
                     style={{ width: '100%', height: '100%' }}
                 />
             </div>
+            <br />
             <Resume />
+            <br />
             <Contact />
             <Footer />
         </div>
