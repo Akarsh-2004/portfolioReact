@@ -1,18 +1,12 @@
 /* src/App.css */
 
 /* 1. Global Box-Sizing Reset */
-/* This is crucial for consistent element sizing.
-   It ensures that padding and border are included in an element's
-   total width and height, preventing unexpected overflows. */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 /* 2. CSS Variable Definitions */
-/* Define your theme colors and other reusable values here.
-   These are referenced in your Navbar.css. */
 :root {
-  /* Example values - adjust these to match your actual theme */
   --primary-color: #007bff;
   --secondary-color: #6c757d;
   --text-color-dark: #333;
@@ -20,66 +14,62 @@
   --background-color: #ffffff;
   --border-color: #dee2e6;
 
-  /* Navbar specific variables */
-  --navbar-bg: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
-  --navbar-backdrop-filter: blur(10px); /* Blurry effect */
-  --navbar-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  --navbar-text: #343a40; /* Dark text for light navbar */
-  --navbar-hover: #007bff; /* Primary color on hover */
+  --navbar-bg: rgba(255, 255, 255, 0.8);
+  --navbar-backdrop-filter: blur(10px);
+  --navbar-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --navbar-text: #343a40;
+  --navbar-hover: #007bff;
 }
 
 /* 3. Base Body and HTML Styles */
 html, body {
   margin: 0;
   padding: 0;
-  width: 100%; /* Ensures body takes full width */
-  font-family: 'Arial', sans-serif; /* Example font, replace with your preferred font */
+  width: 100%;
+  font-family: 'Arial', sans-serif;
   line-height: 1.6;
   color: var(--text-color-dark);
   background-color: var(--background-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  /* Crucial for preventing horizontal scrolling on mobile */
   overflow-x: hidden;
 }
 
 /* 4. Scroll Behavior */
-/* Makes scrolling smoother for anchor links */
 html {
   scroll-behavior: smooth;
 }
 
-/* 5. Headings Reset (Optional, adjust as needed) */
+/* 5. Headings Reset */
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
   line-height: 1.2;
 }
 
-/* 6. Link Base Styles (Optional, if you want a global default) */
+/* 6. Link Base Styles */
 a {
   color: var(--primary-color);
   text-decoration: none;
 }
-
 a:hover {
   text-decoration: underline;
 }
 
-/* 7. Utility Classes (Example: Lottie Container) */
+/* 7. Utility Classes */
 .lottie-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
   margin: 2rem 0;
-  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
-  max-width: 100%; /* Ensures container itself doesn't cause overflow */
+  flex-wrap: wrap;
+  max-width: 100%;
 }
 
+/* 8. Hero Section Styling */
 .hero-section {
-  background-image: url('src/assets/imagebg.jpg'); /* Adjust path if needed */
+  background-image: url('./assets/imagebg.jpg'); /* Correct relative path for CSS usage */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -97,13 +87,13 @@ a:hover {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Optional: overlay for better text contrast */
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: -1;
 }
 
 .hero-text-container {
   z-index: 2;
-  color: #fff; /* Ensure text is readable */
+  color: #fff;
 }
 
 .greeting {
