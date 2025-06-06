@@ -15,6 +15,8 @@ import animation5 from "./assets/animations/5th.json";
 import Contact from "./components/contacts/Contact.jsx";
 import Footer from "./components/footer/Footer.jsx";
 import Resume from "./components/resume/Resume.jsx"
+import img from './assets/imagebg.jpg';
+
 
 document.documentElement.style.setProperty('--background-color', '#1a1a2e');
 document.documentElement.style.setProperty('--text-color', '#e0e0e0');
@@ -42,19 +44,35 @@ function App() {
         }
     };
 
-    return (
-        // --- KEY CHANGE: App component always uses 'dark-mode' class ---
-        <div className={`App dark-mode`}>
+    return (<>
+    <div className={`App dark-mode`}>
             <Navbar />
 
-            <section id="hero" className="hero-section">
-                <div className="hero-text-container">
-                    <h1 className="greeting">Hi, I'm Akarsh</h1>
-                    <p className="roles">
-                        <Typewriter roles={["Ethical Hacker", "Developer", "ML/AI Enthusiast"]} />
-                    </p>
-                </div>
-            </section>
+        <section
+  id="hero"
+  className="hero-section"
+  style={{
+    backgroundImage: `url(${img})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    height: '100vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+    position: 'relative',
+    zIndex: 1,
+  }}
+>
+  <div className="hero-text-container">
+    <h1 className="greeting">Hi, I'm Akarsh</h1>
+    <p className="roles">
+      <Typewriter roles={["Ethical Hacker", "Developer", "ML/AI Enthusiast"]} />
+    </p>
+  </div>
+</section>
+
 
             <About />
 
@@ -118,6 +136,8 @@ function App() {
             
             <Footer />
         </div>
+        </>
+        
     );
 }
 

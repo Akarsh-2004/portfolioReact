@@ -77,3 +77,40 @@ a:hover {
   flex-wrap: wrap; /* Allows items to wrap on smaller screens */
   max-width: 100%; /* Ensures container itself doesn't cause overflow */
 }
+
+.hero-section {
+  background-image: url('src/assets/imagebg.jpg'); /* Adjust path if needed */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: overlay for better text contrast */
+  z-index: -1;
+}
+
+.hero-text-container {
+  z-index: 2;
+  color: #fff; /* Ensure text is readable */
+}
+
+.greeting {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.roles {
+  font-size: 1.5rem;
+}
