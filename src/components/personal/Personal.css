@@ -12,18 +12,26 @@
   margin-left: -50vw;
   margin-right: -50vw;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   /* no border-radius or shadow here */
 }
 
 .personal-content-container {
   max-width: 900px;
+  width: 100%;
   margin: 0 auto;
   border-radius: 0.75rem;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   color: var(--about-text, #d1d5db);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   animation: slideInFromLeft 0.8s ease forwards;
-  padding: 0 2rem 3rem;
+  padding: 3rem 2rem;
+  text-align: center; /* Center all content by default */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .personal-content-container h2 {
@@ -33,12 +41,15 @@
   margin-bottom: 1.5rem;
   position: relative;
   padding-bottom: 0.5rem;
+  text-align: center;
+  width: 100%;
 }
 
 .personal-content-container h2::after {
   content: '';
   position: absolute;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%); /* Center the underline */
   bottom: 0;
   width: 60px;
   height: 4px;
@@ -53,19 +64,20 @@
   margin-bottom: 3rem;
   text-align: center;
   max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
 }
 
-/* Social Links container mimicking skills-icons-container */
+/* Social Links container - properly centered */
 .social-links-container {
   display: flex;
   gap: 3rem;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
+  width: 100%;
 }
 
-/* Each social link as a card like skill-icon */
+/* Each social link as a card - consistent sizing */
 .social-link {
   background-color: var(--card-background, #111827);
   border-radius: 10px;
@@ -73,10 +85,13 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: center;
+  justify-content: flex-start; /* Align content to start within each card */
   width: 320px;
+  max-width: 100%;
   text-decoration: none;
   color: var(--about-text, #d1d5db);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-sizing: border-box;
 }
 
 .social-link:hover {
@@ -85,13 +100,18 @@
   cursor: pointer;
 }
 
-/* Social icons like skill-icon */
+/* Social icons - consistent alignment */
 .social-icon {
   font-size: 3.5rem;
   margin-right: 1.5rem;
   filter: grayscale(30%);
   transition: filter 0.4s ease, transform 0.4s ease;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px; /* Fixed width for consistent alignment */
+  height: 60px; /* Fixed height for consistent alignment */
 }
 
 .social-link:hover .social-icon {
@@ -99,12 +119,22 @@
   transform: scale(1.2) rotate(5deg) translateY(-5px);
 }
 
-/* Text inside social cards */
+/* Text inside social cards - properly aligned */
+.social-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+}
+
 .social-text h4 {
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
   color: var(--about-heading, #10b981);
+  margin: 0 0 0.5rem 0;
 }
 
 .social-text p {
@@ -137,18 +167,73 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+  .personal-section {
+    padding: 3rem 0.5rem;
+  }
+
+  .personal-content-container {
+    padding: 2rem 1rem;
+    max-width: 95%;
+  }
+
+  .personal-content-container h2 {
+    font-size: 2rem;
+  }
+
+  .personal-content-container .intro-text {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
   .social-links-container {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    width: 100%;
   }
 
   .social-link {
     width: 100%;
     max-width: 350px;
+    padding: 1.25rem 1.5rem;
   }
 
+  .social-icon {
+    font-size: 3rem;
+    width: 50px;
+    height: 50px;
+  }
+
+  .social-text h4 {
+    font-size: 1.1rem;
+  }
+
+  .social-text p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
   .personal-content-container {
-    padding: 0 1rem 3rem;
+    padding: 1.5rem 0.75rem;
+  }
+
+  .personal-content-container h2 {
+    font-size: 1.75rem;
+  }
+
+  .social-links-container {
+    gap: 1.5rem;
+  }
+
+  .social-link {
+    padding: 1rem 1.25rem;
+  }
+
+  .social-icon {
+    font-size: 2.5rem;
+    margin-right: 1rem;
+    width: 45px;
+    height: 45px;
   }
 }

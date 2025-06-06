@@ -131,7 +131,11 @@ function App() {
                     style={{ width: '100%', height: '100%' }} // Style the Lottie component
                 />
             </div>
+            <br/>
+            <br/>
             <Resume />
+            <br/>
+            <br/>  
             <Contact />
             
             <Footer />

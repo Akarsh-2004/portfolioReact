@@ -36,6 +36,7 @@
     position: relative;
     padding-bottom: 10px;
     font-weight: 700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow for better readability */
 }
 
 .skills-content h2::after {
@@ -92,16 +93,17 @@
 }
 
 .skill-icon {
-    max-width: 150px; /* Max width for each icon */
-    max-height: 150px; /* Max height for each icon */
-    height: auto;
-    object-fit: contain;
+    width: 120px; /* Fixed width for all icons */
+    height: 120px; /* Fixed height for all icons */
+    object-fit: cover; /* Ensures images fill the container while maintaining aspect ratio */
+    object-position: center; /* Centers the image within the container */
     transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease; /* Smooth transitions for effects */
     filter: grayscale(70%); /* Slightly desaturated initially */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle initial shadow */
     border-radius: 10px; /* Slightly rounded corners for icons */
-    padding: 15px; /* Padding inside the icon's box-shadow area */
+    padding: 10px; /* Padding inside the icon's box-shadow area */
     background-color: var(--card-background); /* Background for icons */
+    border: 2px solid transparent; /* Invisible border that will help with consistent sizing */
 }
 
 .skill-icon:hover {
@@ -111,15 +113,26 @@
     cursor: pointer; /* Indicate interactivity */
 }
 
-/* Yellow Theme Overrides */
+/* Yellow Theme Overrides - Improved font colors */
 .skills-section.yellow-theme {
     --about-left-bg: #f9f871;
-    --about-heading: #585c00;
+    --about-heading: #2c2f00; /* Darker, more readable heading color */
     --about-underline: #e3eb14;
-    --about-text: #333400;
+    --about-text: #1a1c00; /* Much darker text for better contrast and readability */
     --card-background: #ffffe0;
     border-top: 3px solid #e3eb14;
     box-shadow: inset 0 0 40px rgba(227, 235, 20, 0.15);
+}
+
+/* Additional text styling for better readability */
+.skills-section.yellow-theme .skills-content .skill-group h3 {
+    color: #2c2f00; /* Dark green-black for subheadings */
+    font-weight: 700; /* Make subheadings bolder */
+}
+
+.skills-section.yellow-theme .skills-content .skill-group p {
+    color: #1a1c00; /* Very dark for body text */
+    font-weight: 500; /* Slightly bolder body text */
 }
 
 /* Animations (if not globally defined) */
@@ -167,8 +180,8 @@
     }
 
     .skill-icon {
-        max-width: 120px; /* Smaller max width for icons on mobile */
-        max-height: 120px; /* Smaller max height for icons on mobile */
-        padding: 10px;
+        width: 100px; /* Smaller fixed width for mobile */
+        height: 100px; /* Smaller fixed height for mobile */
+        padding: 8px;
     }
 }

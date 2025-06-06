@@ -3,7 +3,7 @@ import "./Resume.css"
 function Resume(){
     return(<>
      <div className="resume-download">
-        <a href="/resumeMAY.pdf" download className="download-button">
+        <a href="/resume.pdf" download className="download-button">
           📄 Download Resume
         </a>
       </div></>);

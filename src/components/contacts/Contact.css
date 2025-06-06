@@ -1,71 +1,339 @@
+/* --- Base Contact Section Styling --- */
 .contact-section {
   width: 100vw;
   max-width: 100%;
-  margin: 0; /* REMOVE ALL MARGINS */
-  padding: 2rem 1rem;
-  background-color: #1f2937;
-  border-radius: 0;
-  color: #d1d5db;
+  margin: 0;
+  padding: 6rem 1rem;
+  background-color: var(--card-background);
+  color: var(--about-text);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  box-shadow: none;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
 }
 
+/* --- Animated Background Pattern --- */
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, var(--about-underline) 0%, transparent 70%),
+              radial-gradient(circle at 80% 20%, var(--navbar-hover) 0%, transparent 70%);
+  opacity: 0.05;
+  animation: backgroundFloat 10s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes backgroundFloat {
+  0%, 100% { opacity: 0.05; transform: translateY(0px); }
+  50% { opacity: 0.1; transform: translateY(-15px); }
+}
+
+/* --- Section Heading (h2) --- */
 .contact-section h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #10b981;         /* green highlight */
-  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--about-heading);
+  font-weight: 700;
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+  z-index: 2;
+  animation: slideInFromTop 0.8s ease-out forwards;
+  line-height: 1.2;
 }
 
+.contact-section h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -15px;
+  width: 70px;
+  height: 5px;
+  background: linear-gradient(90deg, var(--about-underline), var(--about-underline));
+  border-radius: 3px;
+  transform: translateX(-50%);
+  animation: expandWidth 1s ease-out 0.5s forwards;
+}
+
+@keyframes slideInFromTop {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes expandWidth {
+  from { width: 0; }
+  to { width: 70px; }
+}
+
+/* --- Section Paragraph (p) --- */
 .contact-section p {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #9ca3af;
+  margin-bottom: 3rem;
+  color: var(--about-text);
+  width: 100%;
+  max-width: 650px;
+  position: relative;
+  z-index: 2;
+  animation: slideInFromBottom 0.8s ease-out 0.4s forwards;
+  font-size: 1.15rem;
+  line-height: 1.7;
 }
 
+@keyframes slideInFromBottom {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Contact Form Container --- */
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.8rem;
+  width: 100%;
+  max-width: 650px;
+  background: var(--card-background);
+  padding: 3rem;
+  border-radius: 18px;
+  border: 2px solid var(--about-underline);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15),
+              0 0 0 1px rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 2;
+  animation: slideInScale 0.9s ease-out 0.6s forwards;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added transitions for direct hover */
 }
 
+@keyframes slideInScale {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --- Contact Form Border Animation (MODIFIED: REMOVED HOVER GLOW) --- */
+.contact-form::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: transparent; /* No background by default */
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0; /* Always invisible */
+  transition: none; /* No transition needed if always invisible */
+  filter: none; /* No blur filter */
+}
+
+/* Removed .contact-form:hover::before block entirely */
+
+/* ADDED: Direct hover effect on the form itself for subtle feedback */
+.contact-form:hover {
+  transform: translateY(-5px); /* Lifts the card slightly */
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.2), /* More pronounced shadow */
+              0 0 0 2px rgba(255, 255, 255, 0.1); /* Subtle inner highlight */
+}
+
+
+/* --- Form Labels --- */
 .contact-form label {
   font-weight: 600;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.6rem;
+  color: var(--about-heading);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  position: relative;
+  animation: fadeInLeft 0.6s ease-out var(--delay, 0.6s) forwards;
 }
 
+/* --- Form Inputs and Textarea --- */
 .contact-form input,
 .contact-form textarea {
-  padding: 0.75rem 1rem;
-  border: none;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  background-color: #374151; /* darker input bg */
-  color: #f9fafb;
+  padding: 1.1rem 1.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  font-size: 1.05rem;
+  background-color: var(--about-left-bg);
+  color: var(--about-text);
   resize: vertical;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  animation: fadeInRight 0.6s ease-out var(--delay, 0.6s) forwards;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  outline: 2px solid #10b981;
-  background-color: #4b5563;
+  outline: none;
+  border-color: var(--about-underline);
+  background-color: var(--card-background);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2),
+              0 0 0 4px rgba(0, 0, 0, 0.08);
 }
 
+.contact-form textarea {
+  min-height: 140px;
+}
+
+/* --- Input/Label Animation Keyframes --- */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* --- Submit Button --- */
 .contact-form button {
-  margin-top: 1rem;
-  padding: 0.75rem;
-  background-color: #10b981;
-  color: white;
+  margin-top: 1.5rem;
+  padding: 1.1rem 2.2rem;
+  background: var(--about-underline);
+  color: var(--about-heading);
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 14px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  animation: fadeInUp 0.7s ease-out 1.2s forwards;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.contact-form button:hover::before {
+  left: 100%;
 }
 
 .contact-form button:hover {
-  background-color: #059669;
+  transform: translateY(-5px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25),
+              0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
+.contact-form button:active {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15),
+              0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Stagger animations for form elements (adjusted delays) --- */
+.contact-form label:nth-of-type(1) { --delay: 0.6s; }
+.contact-form input:nth-of-type(2) { --delay: 0.75s; }
+.contact-form label:nth-of-type(3) { --delay: 0.9s; }
+.contact-form input:nth-of-type(4) { --delay: 1.05s; }
+.contact-form label:nth-of-type(5) { --delay: 1.2s; }
+.contact-form textarea:nth-of-type(6) { --delay: 1.35s; }
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 4rem 1rem;
+  }
+
+  .contact-section h2 {
+    font-size: 2.2rem;
+  }
+
+  .contact-section p {
+    font-size: 1.05rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-form {
+    padding: 2.5rem 1.5rem;
+    border-radius: 14px;
+    gap: 1.2rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 1rem 1.15rem;
+  }
+
+  .contact-form button {
+    padding: 0.9rem 1.8rem;
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 3rem 0.75rem;
+  }
+
+  .contact-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .contact-section h2::after {
+    width: 50px;
+    height: 4px;
+    bottom: -10px;
+  }
+
+  .contact-section p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-form {
+    padding: 1.5rem 1rem;
+    border-radius: 10px;
+    gap: 1rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+    border-radius: 10px;
+  }
+
+  .contact-form textarea {
+    min-height: 100px;
+  }
+
+  .contact-form button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 10px;
+  }
+}

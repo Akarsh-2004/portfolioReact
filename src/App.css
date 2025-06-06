@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+body {
+  padding-top: 100px; /* Matches fixed navbar height */
+}
+
 /* 2. CSS Variable Definitions */
 :root {
   --primary-color: #007bff;
