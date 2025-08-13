@@ -1,0 +1,33 @@
+.projects-container {
+    padding: 50px 20px; /* Adjust padding as needed */
+    background-color: var(--background-color); /* Use global theme background */
+    color: var(--text-color); /* Use global theme text color */
+    text-align: center;
+}
+
+.projects-main-heading {
+    font-size: 3em;
+    margin-bottom: 50px;
+    color: var(--about-heading); /* Use theme heading color */
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.projects-main-heading::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 100px;
+    height: 5px;
+    background-color: var(--about-underline); /* Use theme underline color */
+    border-radius: 2px;
+}
+
+/* Responsive for main heading */
+@media (max-width: 768px) {
+    .projects-main-heading {
+        font-size: 2.5em;
+    }
+}
