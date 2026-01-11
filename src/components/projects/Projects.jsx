@@ -63,7 +63,7 @@ const projectsData = [
             "Implements complex collision avoidance algorithms and real-time telemetry tracking.",
             "Features a futuristic, high-density visualization engine for orbital path management."
         ],
-        github: "https://github.com/Akarsh-2004/SpaceTraffic"
+        github: "https://github.com/Akarsh-2004/aether"
     },
     {
         title: "BagRAGI AI Travel Partner",
