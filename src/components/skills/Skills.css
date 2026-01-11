@@ -1,0 +1,96 @@
+.skills-section {
+    padding: 0.5rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skills-section h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    text-align: center;
+    margin-bottom: 5rem;
+    background: linear-gradient(to bottom, #fff, var(--text-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    padding: 0 1.5rem;
+}
+
+.skill-group {
+    background: var(--bg-secondary);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 2.5rem;
+    transition: var(--transition-smooth);
+}
+
+.skill-group:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    background: var(--bg-tertiary);
+}
+
+.skill-group h3 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    font-weight: 700;
+}
+
+.skill-group p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.skills-icons-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 8rem;
+    padding: 3rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--glass-border);
+    border-radius: 40px;
+}
+
+.skill-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    /* Fix: ensures logos like AWS are fully visible */
+    border-radius: 16px;
+    padding: 12px;
+    background: var(--bg-primary);
+    border: 1px solid var(--glass-border);
+    transition: var(--transition-smooth);
+    filter: grayscale(1) opacity(0.6);
+}
+
+.skill-icon:hover {
+    transform: scale(1.15) translateY(-5px);
+    filter: grayscale(0) opacity(1);
+    border-color: var(--accent);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+}
+
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-icon {
+        width: 60px;
+        height: 60px;
+        padding: 8px;
+    }
+}

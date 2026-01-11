@@ -1,0 +1,14 @@
+.animated-link {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.animated-link .underline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  background-color: #c77dff;
+}

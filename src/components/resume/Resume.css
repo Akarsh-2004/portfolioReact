@@ -1,0 +1,40 @@
+.resume-download {
+  padding: 8rem 0;
+  text-align: center;
+}
+
+.download-button {
+  cursor: pointer;
+  user-select: none;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 12px;
+  padding: 1rem 2.5rem;
+  font-weight: 600;
+  transition: var(--transition-smooth);
+  border: none;
+}
+
+.download-button:hover {
+  background: var(--accent);
+  filter: brightness(1.2);
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
+  transform: translateY(-3px);
+}
+
+/* Optional: add a subtle bounce on hover */
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.download-button:hover {
+  animation: bounce 0.4s ease;
+}

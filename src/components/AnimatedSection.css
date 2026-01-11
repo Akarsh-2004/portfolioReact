@@ -1,0 +1,4 @@
+.animated-section {
+  position: relative;
+  will-change: transform, opacity;
+}

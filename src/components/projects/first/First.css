@@ -1,0 +1,138 @@
+/* Styling for individual project items */
+.project-item {
+    display: flex;
+    align-items: stretch;
+    height: auto;
+    max-width: 100vw;
+    margin: 20px 0; /* Add some vertical spacing between projects */
+    padding: 0;
+    background-color: var(--card-background); /* Uses global theme variable */
+    border-radius: 8px; /* Slightly rounded corners for the whole project card */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    overflow: hidden;
+    flex-wrap: wrap; /* Allows columns to stack on smaller screens */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+/* Base styles for content and image */
+.project-item .project-content,
+.project-item .project-image {
+    flex: 1;
+    min-width: 400px; /* Adjust min-width as needed */
+    padding: 40px; /* Reduced padding slightly for individual items */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--about-left-bg); /* Using theme variable */
+    color: var(--about-text);
+}
+
+.project-item .project-image {
+    background-color: var(--card-background); /* Using theme variable */
+}
+
+.project-item .project-content h2 {
+    color: var(--about-heading);
+    font-size: 2em; /* Slightly smaller for individual project titles */
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.project-item .project-content p {
+    font-size: 0.95em;
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: var(--about-text);
+}
+
+.project-item .project-image img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.project-item .project-image img:hover {
+    transform: scale(1.02);
+}
+
+/* Project links/buttons - CENTERED */
+.project-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center; /* Centers the buttons horizontally */
+    align-items: center; /* Centers the buttons vertically within the container */
+}
+
+.project-button {
+    display: inline-block;
+    padding: 12px 24px; /* Slightly larger padding for better appearance */
+    background-color: var(--about-underline); /* Example button color */
+    color: var(--about-heading); /* Button text color */
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center; /* Ensures text inside button is centered */
+    min-width: 100px; /* Minimum width for consistent button size */
+}
+
+.project-button:hover {
+    background-color: var(--navbar-hover); /* Darker on hover */
+    transform: translateY(-2px);
+}
+
+/* Alternating layout: For even-numbered projects, image on the right */
+.project-item-alt {
+    flex-direction: row-reverse; /* Flips the order of columns */
+}
+
+/* Responsive adjustments for individual project items */
+@media (max-width: 992px) {
+    .project-item {
+        flex-direction: column; /* Stack columns vertically on smaller screens */
+    }
+
+    .project-item .project-content,
+    .project-item .project-image {
+        min-width: 100%; /* Take full width */
+        padding: 30px; /* Adjust padding */
+    }
+
+    .project-item-alt {
+        flex-direction: column; /* Ensure it also stacks */
+    }
+
+    .project-item .project-content h2 {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 576px) {
+    .project-item .project-content,
+    .project-item .project-image {
+        padding: 20px;
+    }
+    
+    .project-item .project-content h2 {
+        font-size: 1.5em;
+    }
+    
+    .project-button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+        min-width: 80px; /* Smaller minimum width on mobile */
+    }
+    
+    .project-links {
+        gap: 10px; /* Reduced gap on mobile */
+    }
+}

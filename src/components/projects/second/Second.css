@@ -1,0 +1,8 @@
+/* Re-use the base styles from First.css if they are generic enough */
+/* You can also put shared styles in a common file like src/components/Projects/common-project.css */
+
+/* For now, just import the base styles, assuming common CSS will be used */
+@import '../first/First.css';
+
+/* Add any specific overrides for this project if needed */
+/* For example, if this project needs a different background color or specific spacing */

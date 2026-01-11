@@ -1,0 +1,4 @@
+/* Re-use the base styles from First.css if they are generic enough */
+@import '../first/First.css';
+
+/* Add any specific overrides for this project if needed */
